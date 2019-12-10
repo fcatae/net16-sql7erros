@@ -15,7 +15,7 @@ namespace MeuTrabalho.Controllers
 
         public HomeController()
         {
-            this.connection = new SqlConnection("Server=saturnoserver.database.windows.net;Database=MEUDB;User=app;Password=homework-jan31;Max Pool Size=2");
+            this.connection = new SqlConnection("Server=martedb.database.windows.net;Database=sql7;User=app;Password=homework-dez12;Max Pool Size=2");
         }
 
         public IActionResult Index()
