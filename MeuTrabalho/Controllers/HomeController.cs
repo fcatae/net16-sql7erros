@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MeuTrabalho.Models;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace MeuTrabalho.Controllers
 {
@@ -15,7 +16,7 @@ namespace MeuTrabalho.Controllers
 
         public HomeController()
         {
-            this.connection = new SqlConnection("Server=martedb.database.windows.net;Database=sql7;User=app;Password=homework-dez12;Max Pool Size=2");
+            this.connection = new SqlConnection("Server=.;Database=DB01;User=user1;Password=user1");
         }
 
         public IActionResult Index()
@@ -61,10 +62,15 @@ namespace MeuTrabalho.Controllers
             {
                 SqlConnection conn1 = this.connection;
 
-                SqlCommand sql = new SqlCommand("INSERT tbLog VALUES ('contact')");
-                sql.Connection = conn1;
+                // conn1.Open();
 
-                sql.ExecuteScalar();
+                //SqlCommand sql = new SqlCommand("INSERT tbLog VALUES ('contact')");
+                //sql.Connection = conn1;
+
+                //sql.ExecuteScalar();
+
+                conn1.Execute("INSERT tbLog VALUES (@texto)", new { texto = "contact" });
+
             }
             catch(Exception ex)
             {
